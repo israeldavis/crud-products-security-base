@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/plantilla :: head">
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+<nav th:replace="layout/plantilla :: sidebar"></nav>
+<div class="page" >
+    <header th:replace="layout/plantilla :: header" ></header>
+    <div class="col-md-12 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 offset-2 mt-5">
+                    <div class="card">
+                        <div class="card-header bg-dark text-primary">
+                            <h5>Login</h5>
+                        </div>
+
+                        <div class="card-body">
+                            <form novalidate autocomplete="off"
+                                  method="post" th:action="@{/login}">
+
+                                <fieldset>
+                                    <div class="form-group row">
+                                        <label class="col-md-2 col-form-label"
+                                               for="username">Username</label>
+                                        <div class="col-md-8">
+                                            <input class="form-control"
+                                                   id="username"
+                                                   type="text"
+                                                   placeholder="Nombre del Usuario(Requerido)"
+                                                   required
+                                                   name="username"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label class="col-md-2 col-form-label"
+                                               for="password">Password</label>
+                                        <div class="col-md-8">
+                                            <input class="form-control"
+                                                   id="password"
+                                                   type="password"
+                                                   placeholder="Password(Requerido)"
+                                                   required
+                                                   name="password"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-8 offset-md-2">
+                                            <button class="btn btn-primary btn-block "
+                                                    type="submit"
+                                            >
+                                                Log in
+                                            </button>
+                                        </div>
+                                    </div>
+                                </fieldset>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <footer th:replace="layout/plantilla :: footer" ></footer>
+</div>
+</body>
+</html>

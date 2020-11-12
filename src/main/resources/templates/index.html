@@ -1,0 +1,78 @@
+<!DOCTYPE>
+<html html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="layout/plantilla :: head">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Catálogo de Productos</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="all,follow">
+
+</head>
+<body>
+<!-- Side Navbar -->
+<nav th:replace="layout/plantilla :: sidebar"></nav>
+<div class="page">
+    <header th:replace="layout/plantilla :: header"></header>
+    <!-- Counts Section -->
+    <!-- Header Section-->
+
+
+    <div class="col-md-12 mt-3">
+        <div class="card">
+            <div class="card-header bg-dark text-primary">
+                <h4>Listado de Productos</h4>
+                <a th:href="@{/products/export/pdf}" class="btn btn-primary">Export to PDF</a>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped">
+                    <thead class="bg-dark text-white">
+                    <th>#</th>
+                    <!-- <th>
+                        <form method="post" th:action="@{/toggleImage}">
+                            <input type="submit" class="btn btn-primary" value="Mostrar Imagen">
+
+                        </form>
+                    </th> -->
+                    </th>
+                    <th>Nombre</th>
+                    <th>Código</th>
+                    <th>Precio</th>
+                    <th>Calificacion</th>
+                    <th ></th>
+                    <th></th>
+                    </thead>
+                    <tbody>
+                    <tr th:each="producto : ${productos}">
+                        <td th:text="${producto.id}"></td>
+                        <!-- <td >
+                            <span th:if="${mostrarImagen}"><img th:src="@{${producto.imageUrl}}" width="80" ></span>
+                        </td> -->
+                        <td >
+                            <b>
+                                <a  th:href="@{'/productos/' + ${producto.id}}" th:text="${producto.productName}">Nombre</a>
+                            </b>
+                        </td>
+
+                        <td th:text="${producto.productCode}"></td>
+                        <td th:text="${producto.price}"></td>
+                        <td th:text="${producto.starRating}"></td>
+                        <td ><a th:href="@{'/productos/editar/' + ${producto.id}}" class="btn btn-primary">Editar</a> </td>
+                          <td><a th:href="@{'/productos/borrar/' + ${producto.id}}" class="btn btn-danger" th:onclick="confirm('¿Confirma que quiere borrar el producto?')">Borrar</a> </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Statistics Section-->
+    <!-- Updates Section -->
+    <footer th:replace="layout/plantilla :: footer"></footer>
+</div>
+
+</body>
+</html>

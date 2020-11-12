@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/plantilla :: head">
+    <meta charset="UTF-8" />
+    <title>Detalles del Producto</title>
+</head>
+<body>
+<!-- Side Navbar -->
+<nav th:replace="layout/plantilla :: sidebar"></nav>
+<div class="page">
+    <header th:replace="layout/plantilla :: header"></header>
+    <!-- Counts Section -->
+    <!-- Header Section-->
+
+    <div class="col-md-12 mt-3">
+        <div class="container">
+            <div class="card">
+
+                <div class="card-header text-primary bg-dark">
+                    <h4>Detalles del Producto</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <aside class="col-sm-5 border-right">
+                            <article class="gallery-wrap">
+                                <div class="img-big-wrap">
+                                    <div> <img th:src="${producto.imageUrl}"></div>
+                                </div>
+                            </article> <!-- gallery-wrap .end// -->
+                        </aside>
+                        <aside class="col-sm-7 p-5">
+                            <article class="card-body p-5">
+                                <h3 class="title mb-3" th:text="${producto.productName}">Original Version of Some product name</h3>
+
+                                <p class="price-detail-wrap">
+                            <span class="price h2 text-primary">
+                                <span class="currency"> $</span><span class="num" th:text="${producto.price}">1299</span>
+                            </span>
+
+                                </p> <!-- price-detail-wrap .// -->
+                                <dl class="param param-feature">
+                                    <dt>Description</dt>
+                                    <dd th:text="${producto.description}">
+                                    </dd>
+                                </dl>
+                                <dl class="param param-feature">
+                                    <dt>Código#</dt>
+                                    <dd th:text="${producto.productCode}"></dd>
+                                </dl>  <!-- item-property-hor .// -->
+                                <dl class="param param-feature">
+                                    <dt>Calificación</dt>
+                                    <dd th:text="${producto.starRating}"></dd>
+                                </dl>  <!-- item-property-hor .// -->
+                                <dl class="param param-feature">
+                                    <dt>Fecha de Ingreso a Inventario</dt>
+                                    <dd th:text="${producto.releaseDate}"></dd>
+                                </dl>  <!-- item-property-hor .// -->
+
+                                <hr>
+                                <a th:href="@{/}" class="btn btn-primary"> Regresar </a>
+                                <a type="button" data-toggle="modal"  data-target="#exampleModal" class="btn btn-danger" >Borrar</a>
+                                <hr>
+
+                                <!-- <a href="#" class="btn btn-lg btn-outline-primary text-uppercase"> <i class="fas fa-shopping-cart"></i> Add to cart </a> -->
+                            </article> <!-- card-body.// -->
+                        </aside> <!-- col.// -->
+                    </div> <!-- row.// -->
+                </div>
+            </div> <!-- card.// -->
+
+            <div th:replace="layout/plantilla :: modalConfirmation"></div>
+
+        </div>
+        <!--container.//-->
+    </div>
+
+    <!-- Statistics Section-->
+    <!-- Updates Section -->
+    <footer th:replace="layout/plantilla :: footer"></footer>
+</div>
+</body>
+</html>
