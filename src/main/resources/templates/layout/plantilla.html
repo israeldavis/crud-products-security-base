@@ -90,7 +90,7 @@
                     <h5 class="sidenav-heading">Main</h5>
                     <ul id="side-main-menu" class="side-menu list-unstyled">
                         <li><a th:href="@{/}"> <i class="icon-home"></i>Lista de Productos</a></li>
-                        <li ><a th:href="@{/productos/create}"> <i class="icon-form"></i>Nuevo Producto</a></li>
+                        <li sec:authorize="hasRole('ADMIN')"><a th:href="@{/productos/create}"> <i class="icon-form"></i>Nuevo Producto</a></li>
 
                     </ul>
                 </div>
@@ -107,9 +107,9 @@
                             <div class="brand-text d-none d-md-inline-block"><span>Bootstrap </span><strong class="text-primary">Dashboard</strong></div></a>
                         </div>
                         <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
-                            <span class="text-white" >Bienvenido &nbsp;</span> <span   class="text-white">Nombre del usuario</span>
+                            <span class="text-white" sec:authorize="isAuthenticated()">Bienvenido &nbsp;</span> <span sec:authorize="isAuthenticated()" sec:authentication="name"  class="text-white">Nombre del usuario</span>
                             <!-- Log out-->
-                            <form method="post" th:action="@{/logout}">
+                            <form method="post" th:action="@{/logout}" sec:authorize="isAuthenticated()">
                                 <a href="#" class="nav-link logout nav-item" onclick="this.parentNode.submit();" > <span class="d-none d-sm-inline-block">Logout</span><i class="fa fa-sign-out"></i></a>
                             </form>
                         </ul>
