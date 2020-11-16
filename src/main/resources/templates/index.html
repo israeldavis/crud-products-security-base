@@ -41,8 +41,8 @@
                     <th>Código</th>
                     <th>Precio</th>
                     <th>Calificacion</th>
-                    <th ></th>
-                    <th></th>
+                    <th sec:authorize="hasRole('ROLE_ADMIN')"></th>
+                    <th sec:authorize="hasRole('ROLE_ADMIN')"></th>
                     </thead>
                     <tbody>
                     <tr th:each="producto : ${productos}">
@@ -59,8 +59,8 @@
                         <td th:text="${producto.productCode}"></td>
                         <td th:text="${producto.price}"></td>
                         <td th:text="${producto.starRating}"></td>
-                        <td ><a th:href="@{'/productos/editar/' + ${producto.id}}" class="btn btn-primary">Editar</a> </td>
-                          <td><a th:href="@{'/productos/borrar/' + ${producto.id}}" class="btn btn-danger" th:onclick="confirm('¿Confirma que quiere borrar el producto?')">Borrar</a> </td>
+                        <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{'/productos/editar/' + ${producto.id}}" class="btn btn-primary">Editar</a> </td>
+                        <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{'/productos/borrar/' + ${producto.id}}" class="btn btn-danger" th:onclick="confirm('¿Confirma que quiere borrar el producto?')">Borrar</a> </td>
                     </tr>
                     </tbody>
                 </table>
