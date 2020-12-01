@@ -96,6 +96,11 @@ public class ProductsController {
         return "redirect:/";
     }
 
+    @GetMapping("/403")
+    public String erorr403(){
+        return "/errores/403";
+    }
+
     @GetMapping("/products/export/pdf")
     public void exportToPdf(HttpServletResponse response) throws DocumentException, IOException {
         response.setContentType("application/pdf");
